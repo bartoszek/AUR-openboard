@@ -6,6 +6,7 @@ pkgdesc="Interactive whiteboard software for schools and universities"
 arch=('x86_64' 'i686')
 url="http://openboard.ch/index.en.html"
 license=('GPL3')
+options=(debug !strip)
 depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'qt5-script' 'qt5-webkit' 'qt5-tools' 'qt5-xmlpatterns' 'libpaper' 'bzip2' 'openssl-1.0' 'libfdk-aac' 'sdl' 'ffmpeg')
 source=("https://github.com/OpenBoard-org/OpenBoard/archive/v$pkgver.tar.gz"
         "https://github.com/OpenBoard-org/OpenBoard-ThirdParty/archive/master.zip"
@@ -38,24 +39,24 @@ build() {
   
   cd freetype
   qmake freetype.pro -spec linux-g++
-  make
+  make debug
   cd ..
 
   cd quazip
   qmake quazip.pro -spec linux-g++
-  make
+  make debug
   cd ..
 
   cd xpdf/xpdf-3.04
   ./configure --with-freetype2-library="../../freetype/lib/linux" --with-freetype2-includes="../../freetype/freetype-2.6.1/include"
   cd ..
   qmake xpdf.pro -spec linux-g++
-  make
+  make debug
   cd ..
 
   cd "$srcdir/OpenBoard-$pkgver"
   qmake OpenBoard.pro -spec linux-g++
-  make
+  make debug
 }
 
 package() {
@@ -68,7 +69,7 @@ package() {
   done
 
   cp -rp $srcdir/OpenBoard-$pkgver/resources/images/OpenBoard.png $pkgdir/opt/openboard/
-  cp -rp build/linux/release/product/OpenBoard $pkgdir/opt/openboard/
+  cp -rp build/linux/debug/product/OpenBoard $pkgdir/opt/openboard/
 
   mkdir -p $pkgdir/usr/share/applications
   cp $srcdir/openboard.desktop $pkgdir/usr/share/applications
