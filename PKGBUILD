@@ -1,7 +1,7 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=openboard
-pkgver=1.5.2
-pkgrel=3
+pkgver=1.5.3
+pkgrel=1
 pkgdesc="Interactive whiteboard software for schools and universities"
 arch=('x86_64' 'i686')
 url="http://openboard.ch/index.en.html"
@@ -15,7 +15,7 @@ source=("https://github.com/OpenBoard-org/OpenBoard/archive/v$pkgver.tar.gz"
         qwebkit.patch
         218.diff
         openboard.desktop)
-md5sums=('12942db4dd84699921a460dccb45d00b'
+md5sums=('fe3644033dccfd16c80b683210e4ac57'
          'fa1ff089f0bcc15d2a510bb90cdd3002'
          '9dbccb56e4079b75c606dc40c3e77f00'
          'bf2c524f3897cfcfb4315bcd92d4206e'
@@ -28,7 +28,7 @@ prepare() {
   mv "$srcdir/OpenBoard-ThirdParty-master" "$srcdir/OpenBoard-ThirdParty"
 
   cd $srcdir/OpenBoard-$pkgver
-  patch -p1 < $srcdir/ssl10.patch
+#  patch -p1 < $srcdir/ssl10.patch
   patch -p1 < $srcdir/qchar.patch
   patch -p1 < $srcdir/qwebkit.patch
   patch -p1 < $srcdir/218.diff
