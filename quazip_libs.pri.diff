@@ -1,0 +1,14 @@
+--- libs.pri	2016-10-08 21:38:56.000000000 +0200
++++ ../../libs.pri	2019-04-12 13:28:09.491183867 +0200
+@@ -27,9 +27,8 @@
+ LIBS        += "-L$$PWD/freetype/lib/$$SUB_LIB" "-lfreetype"
+ # no INCLUDEPATH, freetype is not used directly
+ 
+-QUAZIP_DIR   = "$$PWD/quazip"
+-LIBS        += "-L$$QUAZIP_DIR/lib/$$SUB_LIB" "-lquazip"
+-INCLUDEPATH += "$$PWD/zlib/1.2.8/include"
++QUAZIP_DIR   = "/usr"
++LIBS        += "-lquazip5"
+ 
+ LIBS        += "-L$$PWD/xpdf/lib/$$SUB_LIB" "-lxpdf"
+ XPDF_DIR     = "$$PWD/xpdf/xpdf-3.04"
