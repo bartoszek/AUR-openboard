@@ -5,7 +5,7 @@ pkgrel=2
 pkgdesc="Interactive whiteboard software for schools and universities"
 arch=('x86_64' 'i686')
 url="http://openboard.ch/index.en.html"
-options=(ccache)
+install=openboard.install
 license=('GPL3')
 depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'qt5-script' 'qt5-webkit' 'qt5-tools' 'qt5-xmlpatterns' 'libpaper' 'bzip2' 'openssl' 'libfdk-aac' 'sdl' 'ffmpeg')
 depends+=(quazip)  #drop internal quazip and use system one.
@@ -58,8 +58,7 @@ package() {
   cp -rp $srcdir/OpenBoard-$pkgver/resources/images/OpenBoard.png $pkgdir/opt/openboard/
   cp -rp build/linux/release/product/OpenBoard $pkgdir/opt/openboard/
 
-  mkdir -p $pkgdir/usr/share/applications
-  cp $srcdir/openboard.desktop $pkgdir/usr/share/applications 
-  mkdir -p $pkgdir/usr/bin
+  install -D -m 644 $srcdir/openboard.desktop $pkgdir/usr/share/applications/openboard.desktop
+  install -d -m 755 $pkgdir/usr/bin
   ln -s /opt/openboard/OpenBoard $pkgdir/usr/bin/openboard
 }
