@@ -1,0 +1,16 @@
+--- OpenBoard-ThirdParty-master/libs.pri	2016-10-08 21:38:56.000000000 +0200
++++ OpenBoard-ThirdParty/libs.pri	2019-04-12 13:48:49.713358569 +0200
+@@ -31,11 +31,8 @@
+ LIBS        += "-L$$QUAZIP_DIR/lib/$$SUB_LIB" "-lquazip"
+ INCLUDEPATH += "$$PWD/zlib/1.2.8/include"
+ 
+-LIBS        += "-L$$PWD/xpdf/lib/$$SUB_LIB" "-lxpdf"
+-XPDF_DIR     = "$$PWD/xpdf/xpdf-3.04"
+-INCLUDEPATH += "$$XPDF_DIR"
+-INCLUDEPATH += "$$XPDF_DIR/goo"
+-INCLUDEPATH += "$$XPDF_DIR/splash"
++LIBS        += "-lpoppler"
++INCLUDEPATH += "/usr/include/poppler"
+ 
+ 
+ linux-g++ {
