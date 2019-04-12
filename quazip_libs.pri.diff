@@ -1,5 +1,5 @@
---- libs.pri	2016-10-08 21:38:56.000000000 +0200
-+++ ../../libs.pri	2019-04-12 13:28:09.491183867 +0200
+--- OpenBoard-ThirdParty-master/libs.pri        2016-10-08 21:38:56.000000000 +0200
++++ OpenBoard-ThirdParty/libs.pri       2019-04-12 13:48:49.713358569 +0200
 @@ -27,9 +27,8 @@
  LIBS        += "-L$$PWD/freetype/lib/$$SUB_LIB" "-lfreetype"
  # no INCLUDEPATH, freetype is not used directly

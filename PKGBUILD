@@ -18,7 +18,7 @@ source=("https://github.com/OpenBoard-org/OpenBoard/archive/v$pkgver.tar.gz"
         https://github.com/OpenBoard-org/OpenBoard/pull/223.diff
         openboard.desktop)
 source+=(quazip.diff quazip_libs.pri.diff)
-source+=(poppler.patch poppler_libs.pri.patch)
+source+=(poppler.patch poppler_libs.pri.patch drop_freetype_libs.pri.patch)
 md5sums=('fe3644033dccfd16c80b683210e4ac57'
          'fa1ff089f0bcc15d2a510bb90cdd3002'
          'bf2c524f3897cfcfb4315bcd92d4206e'
@@ -27,16 +27,18 @@ md5sums=('fe3644033dccfd16c80b683210e4ac57'
          '04c421c140e983d41975943ede5fe61a'
          '21d1749400802f8fc0669feaf77de683'
          '30a7928f696f958d5e8f06e02c49639f'
-         '2930ce863ffafdf21fdcf1455b2503c7'
+         '6323c3d120b88a0b46c1370dbfa3c23a'
          '8b774d204501bb8515ee224651a7d624'
-         'c295b4a26948e6f382b28979e9910859')
+         'c295b4a26948e6f382b28979e9910859'
+         '1fb14e2f40dd46f902d5fb4cc646d1ce')
 
 prepare() {
   rm -rf $srcdir/OpenBoard-ThirdParty
   mv "$srcdir/OpenBoard-ThirdParty-master" "$srcdir/OpenBoard-ThirdParty"
   cd $srcdir/OpenBoard-ThirdParty
-  patch -p0 < $srcdir/quazip_libs.pri.diff
+  patch -p1 < $srcdir/quazip_libs.pri.diff
   patch -p1 < $srcdir/poppler_libs.pri.patch
+  patch -p1 < $srcdir/drop_freetype_libs.pri.patch
 
   cd $srcdir/OpenBoard-$pkgver
   patch -p1 < $srcdir/qchar.patch
