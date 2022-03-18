@@ -1,0 +1,14 @@
+--- orig/OpenBoard.pro
++++ OpenBoard-1.6.1/OpenBoard.pro
+@@ -179,9 +179,9 @@ macx {
+    } else {
+        LIBS += -L/usr/local/opt/quazip/lib -lquazip
+    }
+-   LIBS += -L/usr/local/opt/ffmpeg/lib
++   LIBS += -L/usr/lib/ffmpeg4.4
+    INCLUDEPATH += /usr/local/opt/openssl/include
+-   INCLUDEPATH += /usr/local/opt/ffmpeg/include
++   INCLUDEPATH += /usr/include/ffmpeg4.4
+    equals(QT_MAJOR_VERSION, 5):lessThan(QT_MINOR_VERSION, 14) {
+        INCLUDEPATH += ../OpenBoard-ThirdParty/quazip/quazip-0.7.1
+    } else {
